@@ -1,0 +1,1202 @@
+﻿/* ===== CSS Variables & Base Reset ===== */
+:root {
+  --primary-color: #1560ff;
+  --primary-light: #43b5ff;
+  --primary-dark: #124bcc;
+  --text-color: #26324a;
+  --text-light: #fafdff;
+  --bg-gradient-light: linear-gradient(120deg, #f8faff 80%, #e6f0ff 100%);
+  --bg-gradient-dark: linear-gradient(120deg, #121212 80%, #1a1a1a 100%);
+  --shadow-sm: 0 2px 8px rgba(21, 96, 255, 0.08);
+  --shadow-md: 0 4px 12px rgba(21, 96, 255, 0.15);
+  --border-radius: 8px;
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== Core Styles ===== */
+body {
+  margin: 0;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  background: var(--bg-gradient-light);
+  color: var(--text-color);
+  -webkit-text-size-adjust: 100%;
+  touch-action: manipulation;
+  scroll-behavior: smooth;
+  line-height: 1.5;
+}
+body.modal-open {
+    overflow: hidden;
+}
+#app {
+  max-width: 480px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 1.2rem max(0.7rem, env(safe-area-inset-right)) 2rem max(0.7rem, env(safe-area-inset-left));
+  background: #fff;
+  border-radius: 0 0 16px 16px;
+  box-shadow: var(--shadow-md);
+  width: 100%;
+  position: relative; /* Needed for drawer overlay positioning */
+}
+
+/* ===== Typography ===== */
+h2, h3, h4 {
+  color: var(--primary-color);
+  margin: 1.25rem 0 0.75rem;
+  line-height: 1.3;
+  font-weight: 600;
+  word-break: break-word;
+}
+
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1.1rem; font-weight: 500; }
+
+@media (max-width: 767px) {
+  h2, h3, h4 {
+    margin-top: 3.5rem; /* or 4rem if needed */
+  }
+}
+
+/* ===== Navigation ===== */
+nav#mainNav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  background: transparent;
+  padding: max(0.7rem, env(safe-area-inset-top)) 0.7rem max(0.7rem, env(safe-area-inset-bottom));
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-radius: 0 0 10px 10px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  overflow-x: hidden;
+}
+
+nav#mainNav > * {
+  display: none !important;
+}
+
+nav#mainNav .menu-toggle-btn {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  margin: 0.2rem;
+}
+
+nav#mainNav .navBtn {
+  background: var(--text-light);
+  color: var(--primary-color);
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  flex: 0 1 auto;
+  min-width: 0;
+  min-height: 44px;
+  text-align: center;
+  -webkit-tap-highlight-color: transparent;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+nav#mainNav .navBtn:hover,
+nav#mainNav .navBtn.active {
+  background: var(--primary-light);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+nav#mainNav .desktop-only-nav-btn {
+  display: none !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+}
+
+@media (min-width: 768px) {
+  nav#mainNav .desktop-only-nav-btn {
+    display: block !important;
+    min-width: 80px;
+    padding: 0.6rem 1rem !important;
+  }
+  nav#mainNav .menu-toggle-btn {
+    display: none !important;
+  }
+  nav#mainNav {
+    justify-content: space-between !important;
+  }
+  nav#mainNav .navBtn.active {
+    background: var(--primary-color) !important;
+    color: #fff !important;
+    transform: translateY(-1px) !important;
+  }
+}
+/* Debug class to force hide (remove after testing) */
+.debug-hide-mobile {
+  display: none !important;
+}
+/* ===== Form Elements ===== */
+input:not([type="checkbox"]):not([type="radio"]),
+select,
+textarea {
+  font-size: 1rem;
+  margin: 0.75rem 0;
+  padding: 0.75rem;
+  width: 100%;
+  border-radius: var(--border-radius);
+  border: 1.5px solid #bdd8fc;
+  background: #f9fbff;
+  color: #222;
+  transition: var(--transition);
+  -webkit-appearance: none;
+  appearance: none;
+  min-height: 48px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--primary-color);
+  outline: 2px solid rgba(21, 96, 255, 0.2);
+  background: #f1f9ff;
+}
+
+/* ===== Buttons ===== */
+.btn {
+  font-size: 1rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transition);
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  white-space: normal;
+}
+
+.btn-primary {
+  padding: 0.4em 0.6em;
+    font-size: 0.8em;
+    border-radius: 5px;
+    cursor: pointer;
+    white-space: nowrap;
+    border: 1px solid #ccc;
+    background-color: var(--primary-light);
+  color: white;
+  border-color: var(--primary-color);
+    transition: background-color 0.2s;
+}
+
+.btn-secondary {
+  padding: 0.4em 0.6em;
+    font-size: 0.8em;
+    border-radius: 5px;
+    cursor: pointer;
+    white-space: nowrap;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    color: #333;
+    transition: background-color 0.2s;
+}
+
+/* ===== Layout Components ===== */
+.form-group {
+  margin-bottom: 1.25rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.order-items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.orderItemBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* center everything vertically */
+  gap: 0.3rem;             /* space between name/price/category */
+  padding: 0.75rem 0.5rem;
+  background: #fafdff;
+  color: var(--primary-color);
+  border: 1.5px solid #bdd8fc;
+  border-radius: 10px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  aspect-ratio: 1;
+  min-width: 80px;
+  font-family: 'Segoe UI', Roboto, sans-serif; /* supports ₹ */
+  overflow: hidden; /* optional: safe */
+}
+
+
+/* ===== Drawer Specific Styles ===== */
+#drawerOpenBtn {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+#drawerOpenBtn:hover,
+#drawerOpenBtn:focus {
+  background: var(--primary-light);
+  outline: 2px solid var(--primary-light);
+  outline-offset: 2px;
+}
+
+#drawerNav {
+  position: fixed;
+  top: 0;
+  left: -280px; /* Hidden off-screen by default */
+  width: 250px;
+  height: 100%;
+  background-color: #f8faff; /* Light background for the drawer */
+  box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+  transition: left 0.3s ease-in-out; /* Smooth transition for sliding */
+  z-index: 200; /* Higher than other content */
+  display: flex;
+  flex-direction: column;
+  padding-top: 1em;
+}
+
+#drawerNav.open {
+  left: 0; /* Slides into view when 'open' class is present */
+}
+
+.drawerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8em 1em;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 1em;
+}
+
+.drawerIcon {
+  font-size: 2em;
+  font-weight: 700;
+}
+
+.drawerTitle {
+  margin-left: 0.5em;
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+#drawerCloseBtn {
+  background: none;
+  border: none;
+  font-size: 2em;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+#drawerLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  padding: 0 1em;
+}
+
+.drawerLinkBtn {
+  display: block;
+  width: 100%;
+  padding: 0.8em 1em;
+  border: none;
+  background: none;
+  text-align: left;
+  font-size: 1.1em;
+  color: var(--text-color);
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.drawerLinkBtn:hover,
+.drawerLinkBtn.active,
+.drawerLinkBtn:focus {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  outline: 2px solid var(--primary-light);
+  outline-offset: 2px;
+}
+
+#drawerOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  z-index: 150;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+#drawerOverlay:hover {
+  background: rgba(0,0,0,0.6);
+}
+
+/* ===== Modal Styles ===== */
+.modal {
+  position: fixed;
+  z-index: 1000; /* Higher than drawer for modals */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+  display: none; /* Hidden by default */
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  position: relative;
+  z-index: 1001; /* ADD THIS LINE */
+  animation: fadeIn 0.3s ease-out;
+}
+.modal-content select,
+.modal-content select option {
+  font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+.modal-content h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Styles for the modal-open class on body to prevent scrolling */
+body.modal-open {
+    overflow: hidden;
+}
+
+/* Styles specifically for the order config modal */
+.order-config-form {
+    padding: 1em;
+}
+
+.order-config-form label {
+    display: block;
+    margin-top: 1em;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.order-config-row {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    margin-top: 1em;
+}
+
+.order-config-row label {
+    margin-top: 0;
+    flex-shrink: 0;
+}
+
+.order-config-row input[type="number"] {
+    width: 6em;
+    text-align: center;
+    margin: 0; /* Override default input margin */
+}
+
+.order-config-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1em;
+    margin-top: 1.5em;
+}
+
+.order-modifiers-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    padding: 0.5em 0;
+}
+
+.order-modifier-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.order-modifier-row input[type="checkbox"] {
+    margin: 0; /* Remove default margin */
+    width: auto; /* Prevent full width */
+}
+.order-modifier-row label {
+    margin: 0; /* Remove default margin */
+    font-weight: normal;
+}
+
+/* Cart table styling */
+.cart-table-wrapper {
+    overflow-x: auto;
+    margin-bottom: 1em;
+}
+
+.cart-table-wrapper table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cart-table-wrapper th,
+.cart-table-wrapper td {
+    border: 1px solid #eee;
+    padding: 0.5em;
+    text-align: left;
+    white-space: nowrap; /* Prevent wrapping in cells */
+}
+
+.cart-table-wrapper th {
+    background-color: #f0f0f0;
+    font-weight: 600;
+    color: #555;
+}
+
+.cart-table-wrapper td:last-child {
+    text-align: center; /* Center remove button */
+}
+
+/* Column width adjustments */
+.cart-table-wrapper td:nth-child(1), 
+.cart-table-wrapper th:nth-child(1) {
+    width: 20%; /* Product column */
+}
+
+.cart-table-wrapper td:nth-child(2), 
+.cart-table-wrapper th:nth-child(2) {
+    width: 15%; /* Price column */
+}
+
+.cart-table-wrapper td:nth-child(3), 
+.cart-table-wrapper th:nth-child(3) {
+    width: 15%; /* Quantity column */
+}
+
+.cart-table-wrapper td:nth-child(4), 
+.cart-table-wrapper th:nth-child(4) {
+    width: 15%; /* Subtotal column */
+}
+
+.cart-table-wrapper td:nth-child(5), 
+.cart-table-wrapper th:nth-child(5) {
+    width: 15%; /* Remove column */
+}
+
+/* Mobile-specific adjustments */
+@media screen and (max-width: 600px) {
+    .cart-table-wrapper th,
+    .cart-table-wrapper td {
+        padding: 0.4em 0.3em;
+        font-size: 0.8em;
+        white-space: normal; /* Allow wrapping on mobile */
+    }
+    
+    /* Adjust column widths for smaller screens */
+    .cart-table-wrapper td:nth-child(1), 
+    .cart-table-wrapper th:nth-child(1) {
+        width: 30%; /* More space for product name */
+    }
+    
+    .cart-table-wrapper td:nth-child(2), 
+    .cart-table-wrapper th:nth-child(2) {
+        width: 15%;
+    }
+    
+    .cart-table-wrapper td:nth-child(3), 
+    .cart-table-wrapper th:nth-child(3) {
+        width: 15%;
+    }
+    
+    .cart-table-wrapper td:nth-child(4), 
+    .cart-table-wrapper th:nth-child(4) {
+        width: 20%;
+    }
+    
+    .cart-table-wrapper td:nth-child(5), 
+    .cart-table-wrapper th:nth-child(5) {
+        width: 20%;
+    }
+}
+
+.removeCartBtn {
+    background-color: #ff4d4f;
+    color: white;
+    border: none;
+    padding: 0.4em 0.8em;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8em;
+}
+
+.removeCartBtn:hover {
+    background-color: #e03f41;
+}
+
+/* Sales Section Specific Styles */
+.sales-filters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0.75em;
+    margin-bottom: 1.5em;
+}
+
+.sales-filters-grid > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25em;
+}
+
+.sales-filters-grid label {
+    font-size: 0.9em;
+    color: #555;
+}
+
+.sales-filters-grid input,
+.sales-filters-grid select {
+    margin: 0;
+    padding: 0.5em;
+    min-height: unset; /* Override global min-height */
+}
+
+#salesTableHolder table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5em;
+}
+
+#salesTableHolder th,
+#salesTableHolder td {
+    border: 1px solid #eee;
+    padding: 0.6em 0.4em;
+    text-align: left;
+    vertical-align: top;
+    font-size: 0.9em;
+}
+
+#salesTableHolder th {
+    background-color: #e0efff;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+  #salesTableHolder th {
+      background-color: #3a3a3a;
+      color: var(--primary-light);
+  }
+  #salesTableHolder td {
+      border-color: #4d4d4d;
+  }
+  
+  #salesTableHolder td:nth-child(1), 
+#salesTableHolder th:nth-child(1) {
+    width: 20%; /* User column */
+}
+
+#salesTableHolder td:nth-child(2), 
+#salesTableHolder th:nth-child(2) {
+    width: 50%; /* Items column - most space */
+}
+
+#salesTableHolder td:nth-child(3), 
+#salesTableHolder th:nth-child(3) {
+    width: 15%; /* Total column */
+}
+
+#salesTableHolder td:nth-child(4), 
+#salesTableHolder th:nth-child(4) {
+    width: 15%; /* Actions column */
+}
+
+/* Mobile-specific adjustments */
+@media screen and (max-width: 600px) {
+    #salesTableHolder th,
+    #salesTableHolder td {
+        padding: 0.4em 0.3em;
+        font-size: 0.8em;
+    }
+    
+    /* Adjust column widths for smaller screens */
+    #salesTableHolder td:nth-child(1), 
+    #salesTableHolder th:nth-child(1) {
+        width: 25%;
+    }
+    
+    #salesTableHolder td:nth-child(2), 
+    #salesTableHolder th:nth-child(2) {
+        width: 40%;
+    }
+    
+    #salesTableHolder td:nth-child(3), 
+    #salesTableHolder th:nth-child(3) {
+        width: 15%;
+    }
+    
+    #salesTableHolder td:nth-child(4), 
+    #salesTableHolder th:nth-child(4) {
+        width: 20%;
+    }
+}
+  
+  
+.negative-receipt {
+    background-color: #fff0f0;
+    color: #cc0000;
+}
+
+.negative-amount {
+    color: #cc0000;
+    font-weight: bold;
+}
+
+.sales-actions-container {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 0.3em;
+    align-items: flex-start; /* Align buttons to the left */
+}
+
+.sales-action-btn {
+    padding: 0.4em 0.6em;
+    font-size: 0.8em;
+    border-radius: 5px;
+    cursor: pointer;
+    white-space: nowrap;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    color: #333;
+    transition: background-color 0.2s;
+}
+
+.sales-action-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.deleteReceiptBtn {
+    background-color: #ff6b6b;
+    color: white;
+    border-color: #ff4d4f;
+}
+
+.deleteReceiptBtn:hover {
+    background-color: #ff4d4f;
+}
+
+.editReceiptBtn {
+  background-color: var(--primary-light); /* Light blue */
+  color: #fff;
+  border: 1px solid var(--primary-color);
+}
+
+.editReceiptBtn:hover {
+  background-color: var(--primary-color); /* Darker blue on hover */
+  color: #fff;
+}
+
+
+.negativeReceiptBtn {
+    background-color: #ffe082;
+    color: #333;
+    border-color: #ffc107;
+}
+
+.negativeReceiptBtn:hover {
+    background-color: #ffd700;
+}
+
+.refreshing {
+    opacity: 0.6;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Menu Management Table */
+.menu-items-table-wrapper {
+    overflow-x: auto;
+    margin-top: 1.5em;
+}
+
+.menu-items-table-wrapper table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.menu-items-table-wrapper th,
+.menu-items-table-wrapper td {
+    border: 1px solid #eee;
+    padding: 0.6em 0.4em;
+    text-align: left;
+    vertical-align: top;
+    font-size: 0.9em;
+}
+
+.menu-items-table-wrapper th {
+    background-color: #e0efff;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+/* Column width adjustments - similar to sales table */
+.menu-items-table-wrapper td:nth-child(1), 
+.menu-items-table-wrapper th:nth-child(1) {
+    width: 20%; /* First column */
+}
+
+.menu-items-table-wrapper td:nth-child(2), 
+.menu-items-table-wrapper th:nth-child(2) {
+    width: 50%; /* Main content column */
+}
+
+.menu-items-table-wrapper td:nth-child(3), 
+.menu-items-table-wrapper th:nth-child(3) {
+    width: 15%; /* Smaller column */
+}
+
+.menu-items-table-wrapper td:nth-child(4), 
+.menu-items-table-wrapper th:nth-child(4) {
+    width: 15%; /* Actions column */
+}
+
+/* Mobile-specific adjustments */
+@media screen and (max-width: 600px) {
+    .menu-items-table-wrapper th,
+    .menu-items-table-wrapper td {
+        padding: 0.4em 0.3em;
+        font-size: 0.8em;
+    }
+    
+    /* Adjust column widths for smaller screens */
+    .menu-items-table-wrapper td:nth-child(1), 
+    .menu-items-table-wrapper th:nth-child(1) {
+        width: 25%;
+    }
+    
+    .menu-items-table-wrapper td:nth-child(2), 
+    .menu-items-table-wrapper th:nth-child(2) {
+        width: 40%;
+    }
+    
+    .menu-items-table-wrapper td:nth-child(3), 
+    .menu-items-table-wrapper th:nth-child(3) {
+        width: 15%;
+    }
+    
+    .menu-items-table-wrapper td:nth-child(4), 
+    .menu-items-table-wrapper th:nth-child(4) {
+        width: 20%;
+    }
+}
+.editItemBtn, .deleteItemBtn {
+    padding: 0.4em 0.6em;
+    font-size: 0.8em;
+    border-radius: 5px;
+    cursor: pointer;
+    white-space: nowrap;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    color: #333;
+    transition: background-color 0.2s;
+}
+
+.editItemBtn:hover {
+    background-color: #e0e0e0;
+}
+
+.deleteItemBtn {
+    background-color: #ff6b6b;
+    color: white;
+    border-color: #ff4d4f;
+}
+
+.deleteItemBtn:hover {
+    background-color: #ff4d4f;
+}
+
+/* ===== Dark Mode ===== */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: var(--bg-gradient-dark);
+    color: #e0e0e0;
+  }
+
+  #app {
+    background: #1e1e1e;
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  .navBtn {
+    background: #2d2d2d;
+    color: #e0e0e0;
+  }
+
+  h2, h3, h4 {
+    color: #5d9cff;
+  }
+
+  #drawerNav {
+    background-color: #2d2d2d;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.3);
+  }
+
+  .drawerHeader {
+    border-bottom-color: #3d3d3d;
+  }
+
+  #drawerCloseBtn {
+    color: #e0e0e0;
+  }
+
+  .drawerLinkBtn {
+    color: #e0e0e0;
+  }
+
+  .drawerLinkBtn:hover,
+  .drawerLinkBtn.active {
+    background-color: var(--primary-dark);
+    color: var(--text-light);
+  }
+
+  .orderItemBtn {
+    background: #2d2d2d;
+    border-color: #4d4d4d;
+    color: var(--primary-light);
+  }
+
+  input:not([type="checkbox"]):not([type="radio"]),
+  select,
+  textarea {
+    border-color: #4d4d4d;
+    background: #2d2d2d;
+    color: #e0e0e0;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    border-color: var(--primary-light);
+    outline: 2px solid rgba(67, 181, 255, 0.2);
+    background: #3a3a3a;
+  }
+
+  .btn-secondary {
+    background: #3a3a3a;
+    color: #e0e0e0;
+    border: 1px solid #4d4d4d;
+  }
+  
+  .modal-content {
+      background-color: #2d2d2d;
+      border: 1px solid #4d4d4d;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  }
+
+  .cart-table-wrapper th {
+      background-color: #3a3a3a;
+      color: #ddd;
+  }
+
+  .cart-table-wrapper td {
+      border-color: #4d4d4d;
+  }
+
+
+
+  .negative-receipt {
+      background-color: #4a1c1c;
+      color: #ff9999;
+  }
+
+  .sales-action-btn {
+      border-color: #4d4d4d;
+      background-color: #3a3a3a;
+      color: #e0e0e0;
+  }
+
+  .sales-action-btn:hover {
+      background-color: #4a4a4a;
+  }
+
+  .deleteReceiptBtn {
+      background-color: #993333;
+      border-color: #802b2b;
+  }
+
+.editReceiptBtn {
+  background-color: var(--primary-light); /* Light blue */
+  color: #fff;
+  border: 1px solid var(--primary-color);
+}
+
+.editReceiptBtn:hover {
+  background-color: var(--primary-color); /* Darker blue on hover */
+  color: #fff;
+}
+
+  .deleteReceiptBtn:hover {
+      background-color: #a33838;
+  }
+   .negativeReceiptBtn {
+      background-color: #8c7300;
+      border-color: #736000;
+      color: #fff;
+  }
+
+  .negativeReceiptBtn:hover {
+      background-color: #a38900;
+  }
+
+  .drawerIcon,
+  .drawerTitle {
+    color: #e0e0e0; /* Match existing dark mode text color */
+  }
+
+  #drawerOpenBtn {
+    background: var(--primary-dark);
+    color: #e0e0e0;
+  }
+
+  #drawerOpenBtn:hover,
+  #drawerOpenBtn:focus {
+    background: var(--primary-light);
+  }
+}
+
+/* ===== Responsive Adjustments ===== */
+@media (max-width: 480px) {
+  #app {
+    border-radius: 0;
+    padding: 1rem max(0.5rem, env(safe-area-inset-right)) 2rem max(0.5rem, env(safe-area-inset-left));
+  }
+
+  h2 { font-size: 1.35rem; }
+  h3 { font-size: 1.15rem; }
+  h4 { font-size: 1rem; }
+
+  .btn {
+    font-size: 0.95rem;
+    padding: 0.7rem 1.2rem;
+    min-height: 44px;
+    width: 100%;
+  }
+
+  .order-items-grid {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 0.5rem;
+  }
+   .modal-content {
+    width: 95%;
+    margin: 0.5rem;
+  }
+}
+
+/* ===== Utility Classes ===== */
+.hidden { display: none !important; }
+
+/* ===== Animations ===== */
+@keyframes ripple {
+  0% { transform: scale(0); opacity: 0.5; }
+  100% { transform: scale(20); opacity: 0; }
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.02); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+/* ===== Print Styles ===== */
+@media print {
+  body * { visibility: hidden; }
+  #receiptModal, #receiptModal * { visibility: visible; }
+  #receiptModal { 
+    position: absolute; 
+    left: 0; 
+    top: 0; 
+    width: 100vw; 
+    background: #fff; 
+  }
+  .modal-content { box-shadow: none; border: none; }
+  button { display: none; }
+}
+
+/* ===== Sales Filters & Table Styles ===== */
+#salesFilters {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1em;
+    background-color: #f9f9f9;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    box-sizing: border-box;
+}
+
+.sales-filters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1em;
+    align-items: end;
+}
+
+.sales-filters-grid > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.sales-filters-grid label {
+    margin-bottom: 0.3em;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.sales-filters-grid input,
+.sales-filters-grid select {
+    padding: 0.5em 0.7em;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    font-size: 1em;
+    width: 100%;
+}
+
+/* Table Styling for Readability */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+th, td {
+    padding: 0.8em 1em;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+    background-color: #e6f0ff;
+}
+
+/* Styles for special table cells mentioned in app.js */
+.negative-receipt, .negative-receipt td {
+    background-color: #ffe6e6;
+    color: #cc0000;
+}
+
+.negative-amount {
+    color: #cc0000;
+    font-weight: bold;
+}
+
+.sales-actions-container {
+    display: flex;
+    gap: 0.5em;
+    flex-wrap: wrap;
+}
+
+.sales-action-btn {
+    padding: 0.5em 0.8em;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 0.9em;
+    white-space: nowrap;
+}
+
+/* Focus Styles for Accessibility */
+button:focus,
+input:focus,
+select:focus {
+    outline: 2px solid var(--primary-light);
+    outline-offset: 2px;
+}
+
+/* Chart Container Spacing (optional, adjust as needed) */
+canvas {
+    margin-bottom: 1.5em;
+}
+#mainContent.loading {
+  position: relative;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+#mainContent.loading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(21, 96, 255, 0.3);
+  border-top-color: #1560ff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}

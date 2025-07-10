@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="UTF-8">
+  <title>POS App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="Point of Sale Application for efficient business management">
+  <meta name="keywords" content="POS, Point of Sale, Business Management, Sales, Reports">
+  <meta name="author" content="Your Business Name">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#007bff">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="icon" href="/icons/icon-192x192.png" type="image/png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <div id="receiptModal" class="modal" aria-hidden="true"></div>
+  <div id="orderModal" class="modal" aria-hidden="true"></div>
+  <!-- Drawer overlay and navigation -->
+  <div id="drawerOverlay"></div>
+  <nav id="drawerNav" aria-label="Main Menu">
+    <div class="drawerHeader">
+      <span class="drawerIcon">☰</span>
+      <span class="drawerTitle">POS Menu</span>
+      <button id="drawerCloseBtn" title="Close" aria-label="Close navigation menu">×</button>
+    </div>
+    <div id="drawerLinks"></div>
+  </nav>
+  <!-- Main SPA app root -->
+  <div id="app">
+    <noscript>
+      <p style="color: red; text-align: center; padding: 1em;">
+        JavaScript is required to use this POS application. Please enable JavaScript in your browser.
+      </p>
+    </noscript>
+  </div>
+  <script defer src="db.js"></script>
+  <script defer src="app.js"></script>
+</body>
+</html>
