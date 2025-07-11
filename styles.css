@@ -1,4 +1,4 @@
-﻿/* ===== CSS Variables & Base Reset ===== */
+/* ===== CSS Variables & Base Reset ===== */
 :root {
   --primary-color: #1560ff;
   --primary-light: #43b5ff;
@@ -670,7 +670,7 @@ body.modal-open {
     #salesTableHolder td {
         padding: 0.4em 0.3em;
         font-size: 0.8em;
-      /* Ensure readable colors on mobile */
+		/* Ensure readable colors on mobile */
         background-color: #ffffff !important; /* light background */
         color: #000000 !important;            /* dark text */
         border-color: #cccccc;     /* lighter border for visibility */
@@ -1017,6 +1017,34 @@ body.modal-open {
   #drawerOpenBtn:focus {
     background: var(--primary-light);
   }
+  /* Zebra striping for sales and general tables in dark mode */
+#salesTableHolder tr:nth-child(even) td,
+table tr:nth-child(even) td {
+  background-color: #2a2a2a;
+  color: #e0e0e0;
+}
+
+#salesTableHolder tr:nth-child(odd) td,
+table tr:nth-child(odd) td {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+}
+
+/* Hover effect in dark mode */
+#salesTableHolder tr:hover td,
+table tr:hover td {
+  background-color: #2f3b5a;
+  color: #ffffff;
+}
+
+/* Ensure return receipts are readable */
+#salesTableHolder tr.negative-receipt td,
+table tr.negative-receipt td {
+  background-color: #4a1c1c;
+  color: #ff9999;
+}
+
+  
 }
 
 /* ===== Responsive Adjustments ===== */
@@ -1128,6 +1156,7 @@ th, td {
     padding: 0.8em 1em;
     border: 1px solid #ddd;
     text-align: left;
+	color: #000000; /* Default dark text for readability */
 }
 
 th {
@@ -1138,10 +1167,16 @@ th {
 
 tbody tr:nth-child(even) {
     background-color: #f2f2f2;
+	color: #000000;
+}
+tbody tr:nth-child(odd) td {
+    background-color: #ffffff;
+    color: #000000;
 }
 
 tbody tr:hover {
     background-color: #e6f0ff;
+	 color: #000000;
 }
 
 /* Styles for special table cells mentioned in app.js */
