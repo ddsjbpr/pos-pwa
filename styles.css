@@ -670,6 +670,10 @@ body.modal-open {
     #salesTableHolder td {
         padding: 0.4em 0.3em;
         font-size: 0.8em;
+      /* Ensure readable colors on mobile */
+        background-color: #ffffff !important; /* light background */
+        color: #000000 !important;            /* dark text */
+        border-color: #cccccc;     /* lighter border for visibility */
     }
     
     /* Adjust column widths for smaller screens */
