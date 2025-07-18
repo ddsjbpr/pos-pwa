@@ -50,8 +50,10 @@
 
   <!-- ✅ Correct relative path for module loading -->
   <!-- ✅ NEW: Correct path (relative) -->
-<script type="module" src="./src/main.js"></script>
-  <!-- Service Worker -->
+<script type="module">
+  console.log("✅ Inline module script ran!");
+  document.body.innerHTML += "<p style='color:green;'>✅ JS is executing</p>";
+</script> <!-- Service Worker -->
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js').catch(console.error);
