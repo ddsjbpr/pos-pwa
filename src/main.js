@@ -1,9 +1,9 @@
 console.log("main.js loaded!");
 
 function initApp() {
-  const root = document.getElementById("mainContent");
+  const root = document.getElementById("app"); // Use #app instead of #mainContent
   if (!root) {
-    console.error("❌ #mainContent not found");
+    console.error("❌ #app not found");
     return;
   }
 
