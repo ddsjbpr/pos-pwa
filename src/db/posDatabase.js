@@ -1,7 +1,7 @@
 // File: src/db/posDatabase.js
 
 const DB_NAME = 'POS_DB';
-const DB_VERSION = 1;
+const DB_VERSION = 2;
 let db = null;
 
 export function openDB() {
