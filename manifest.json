@@ -1,38 +1,42 @@
-﻿{
+{
   "name": "POS App",
   "short_name": "POS",
   "description": "Point of Sale Application for business management",
-  "start_url": "/",
-  "scope": "/",
+  "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#007bff",
   "theme_color": "#007bff",
-  "categories": ["business", "productivity", "finance"],
+  "categories": [
+    "business",
+    "productivity",
+    "finance"
+  ],
   "icons": [
     {
-      "src": "icons/icon-72x72.png",
+      "src": "./icons/icon-72x72.png",
       "sizes": "72x72",
       "type": "image/png"
     },
     {
-      "src": "icons/icon-96x96.png",
+      "src": "./icons/icon-96x96.png",
       "sizes": "96x96",
       "type": "image/png"
     },
     {
-      "src": "icons/icon-128x128.png",
+      "src": "./icons/icon-128x128.png",
       "sizes": "128x128",
       "type": "image/png"
     },
     {
-      "src": "icons/icon-192x192.png",
+      "src": "./icons/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icons/icon-512x512.png",
+      "src": "./icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
@@ -40,14 +44,14 @@
   ],
   "screenshots": [
     {
-      "src": "screenshots/screenshot1.png",
+      "src": "./screenshots/screenshot1.png",
       "sizes": "1080x1920",
       "type": "image/png",
       "form_factor": "narrow",
       "label": "New Order Screen"
     },
     {
-      "src": "screenshots/screenshot2.png",
+      "src": "./screenshots/screenshot2.png",
       "sizes": "1920x1080",
       "type": "image/png",
       "form_factor": "wide",
@@ -60,35 +64,43 @@
       "short_name": "Order",
       "description": "Create a new customer order",
       "url": "/new-order",
-      "icons": [{ 
-        "src": "icons/shortcut-96x96.png", 
-        "sizes": "96x96",
-        "type": "image/png" 
-      }]
+      "icons": [
+        {
+          "src": "icons/shortcut-96x96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
     },
     {
       "name": "Daily Reports",
       "short_name": "Reports",
       "description": "View today's sales reports",
       "url": "/reports",
-      "icons": [{ 
-        "src": "icons/shortcut-96x96.png", 
-        "sizes": "96x96",
-        "type": "image/png" 
-      }]
+      "icons": [
+        {
+          "src": "icons/shortcut-96x96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
     }
   ],
   "file_handlers": [
     {
       "action": "/import",
       "accept": {
-        "application/json": [".json"]
+        "application/json": [
+          ".json"
+        ]
       },
-      "icons": [{
-        "src": "icons/json-icon-64x64.png",
-        "sizes": "64x64",
-        "type": "image/png"
-      }]
+      "icons": [
+        {
+          "src": "icons/json-icon-64x64.png",
+          "sizes": "64x64",
+          "type": "image/png"
+        }
+      ]
     }
   ],
   "share_target": {
