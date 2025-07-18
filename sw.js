@@ -1,22 +1,22 @@
 ﻿// sw.js - PWA Service Worker (modular version)
 const CACHE_NAME = 'pos-pwa-cache-v1';
-const OFFLINE_PAGE = '/offline.html';
+const OFFLINE_PAGE = './offline.html';
 
 const PRECACHE_ASSETS = [
-  '/',
-  '/index.html',
-  '/styles.css',
-  '/manifest.json',
-  '/offline.html',
+  './',
+  './index.html',
+  './styles.css',
+  './manifest.json',
+  './offline.html',
 
   // Modular JS entry point
-  '/src/main.js',
+  './src/main.js',
 
   // Optional icons/screenshots (uncomment if available)
-  '/icons/icon-192x192.png',
-  '/icons/icon-512x512.png',
-  // '/screenshots/screenshot1.png',
-  // '/screenshots/screenshot2.png',
+  './icons/icon-192x192.png',
+  './icons/icon-512x512.png',
+  // './screenshots/screenshot1.png',
+  // './screenshots/screenshot2.png',
 ];
 
 self.addEventListener('install', (event) => {
@@ -62,3 +62,4 @@ self.addEventListener('fetch', (event) => {
     );
   }
 });
+  
