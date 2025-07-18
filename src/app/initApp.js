@@ -1,4 +1,5 @@
 // File: src/app/initApp.js
+console.log("✅ initApp started");
 import { POSDatabase } from '../db/posDatabase.js';
 import { renderLogin } from '../auth/login.js';
 import { renderRegister } from '../auth/register.js';
