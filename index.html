@@ -48,10 +48,10 @@
     <noscript><p style="text-align:center;color:red;">Please enable JavaScript to use this POS application.</p></noscript>
     <div id="mainContent"></div>
   </div>
-
-  <!-- ✅ CORRECTED SCRIPT PATH -->
-  <script src="src/main.js"></script>
-
+ 
+  <!-- ✅ Main script using ES Modules -->
+  <script type="module" src="src/main.js"></script>
+ 
   <!-- Service Worker -->
   <script>
     if ('serviceWorker' in navigator) {
@@ -64,4 +64,3 @@
   <script>eruda.init();</script>
 </body>
 </html>
-``
