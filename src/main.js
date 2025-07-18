@@ -1,4 +1,5 @@
 // File: src/main.js
+console.log('main.js is running');
 import { initApp } from './app/initApp.js';
 
 window.addEventListener('DOMContentLoaded', () => {
