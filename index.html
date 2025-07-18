@@ -1,67 +1,38 @@
-<!DOCTYPE html>
-<html lang="en-us">
+<!DOCTYPE html><html lang="en-us">
 <head>
   <meta charset="UTF-8">
   <title>POS App</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="theme-color" content="#007bff">
-  <link rel="icon" href="icons/icon-192x192.png" type="image/png">
-  <link rel="manifest" href="manifest.json">
-
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="src/styles/variables.css">
-  <link rel="stylesheet" href="src/styles/base.css">
-  <link rel="stylesheet" href="src/styles/typography.css">
-  <link rel="stylesheet" href="src/styles/forms.css">
-  <link rel="stylesheet" href="src/styles/buttons.css">
-  <link rel="stylesheet" href="src/styles/nav.css">
-  <link rel="stylesheet" href="src/styles/layout.css">
-  <link rel="stylesheet" href="src/styles/modals.css">
-  <link rel="stylesheet" href="src/styles/tables.css">
-  <link rel="stylesheet" href="src/styles/utilities.css">
-  <link rel="stylesheet" href="src/styles/animations.css">
-  <link rel="stylesheet" href="src/styles/sections/order.css">
-  <link rel="stylesheet" href="src/styles/sections/sales.css">
-  <link rel="stylesheet" href="src/styles/sections/users.css">
-  <link rel="stylesheet" href="src/styles/sections/menu.css">
-  <link rel="stylesheet" href="src/styles/responsive.css">
-  <link rel="stylesheet" href="src/styles/dark-mode.css">
-  <link rel="stylesheet" href="src/styles/print.css" media="print">
-
-  <!-- Fonts and Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <!-- Charts and Sanitizers -->
-  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/dompurify@3.0.5/dist/purify.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-</head>
-
-<body>
-  <div id="receiptModal" class="modal"></div>
-  <div id="orderModal" class="modal"></div>
-
+  <link rel="icon" href="./icons/icon-192x192.png" type="image/png">
+  <link rel="manifest" href="./manifest.json">  <!-- Stylesheets -->  <link rel="stylesheet" href="./src/styles/base.css">
+  <link rel="stylesheet" href="./src/styles/layout.css">
+  <link rel="stylesheet" href="./src/styles/typography.css">
+  <link rel="stylesheet" href="./src/styles/forms.css">
+  <link rel="stylesheet" href="./src/styles/buttons.css">  <!-- Fonts and Icons -->  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">  <!-- Charts and Tools -->  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>  <script defer src="https://cdn.jsdelivr.net/npm/dompurify@3.0.5/dist/purify.min.js"></script>  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script></head><body>
   <div id="app">
-    <noscript><p style="text-align:center;color:red;">Please enable JavaScript to use this POS application.</p></noscript>
-    <div id="mainContent"></div>
-  </div>
+    <header class="header">
+      <h1>🧾 POS App</h1>
+    </header><main class="container">
+  <section id="order-section">
+    <h2>New Order</h2>
+    <form id="orderForm">
+      <input type="text" placeholder="Item Name" required>
+      <input type="number" placeholder="Quantity" min="1" required>
+      <input type="number" placeholder="Price" min="0" step="0.01" required>
+      <button type="submit">Add to Order</button>
+    </form>
 
-  <!-- ✅ Correct relative path for module loading -->
-  <!-- ✅ NEW: Correct path (relative) -->
-<script type="module">
-  console.log("✅ Inline module script ran!");
-  document.body.innerHTML += "<p style='color:green;'>✅ JS is executing</p>";
-</script> <!-- Service Worker -->
-  <script>
+    <div id="orderList"></div>
+    <div id="total"></div>
+    <button id="submitOrder">Complete Sale</button>
+  </section>
+</main>
+
+  </div>  <!-- Main Script -->  <script type="module" src="./src/main.js"></script>  <!-- Service Worker Registration -->  <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js').catch(console.error);
+      navigator.serviceWorker.register('./sw.js').catch(console.error);
     }
-  </script>
-
-  <!-- Eruda (Mobile Debug Console) -->
-  <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
-  <script>eruda.init();</script>
-</body>
+  </script></body>
 </html>
