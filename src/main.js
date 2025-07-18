@@ -1,11 +1,8 @@
-// File: src/main.js
-console.log('main.js is running ✅');
+console.log("✅ main.js loaded!");
 
-import { initApp } from '/pos-pwa/src/app/initApp.js';
-
-window.addEventListener('DOMContentLoaded', () => {
-  initApp().catch(err => {
-    console.error('App failed to initialize ❌:', err);
-    alert('Failed to load the app.');
-  });
-});
+const root = document.getElementById("mainContent");
+if (root) {
+  root.innerHTML = "<h1 style='color:green;'>✅ POS App Loaded</h1>";
+} else {
+  console.error("❌ mainContent div not found!");
+}
