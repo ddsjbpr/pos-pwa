@@ -48,16 +48,17 @@
     <div id="mainContent"></div>
   </div>
 
-  <!-- ✅ CORRECT script path -->
-  <script type="module" src="/pos-pwa/src/main.js"></script>
+  <!-- ✅ Correct relative path for module loading -->
+  <script type="module" src="src/main.js"></script>
+
   <!-- Service Worker -->
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('./sw.js').catch(console.error);
+      navigator.serviceWorker.register('sw.js').catch(console.error);
     }
   </script>
 
-  <!-- Eruda (Mobile Console) -->
+  <!-- Eruda (Mobile Debug Console) -->
   <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
   <script>eruda.init();</script>
 </body>
