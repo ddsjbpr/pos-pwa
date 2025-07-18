@@ -6,58 +6,79 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="theme-color" content="#007bff">
 
-  <!-- Icons and Manifest -->
+  <!-- Manifest & Favicon -->
   <link rel="icon" href="./icons/icon-192x192.png" type="image/png">
   <link rel="manifest" href="./manifest.json">
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="./src/styles/variables.css">
-  <link rel="stylesheet" href="./src/styles/base.css">
-  <link rel="stylesheet" href="./src/styles/typography.css">
-  <link rel="stylesheet" href="./src/styles/forms.css">
-  <link rel="stylesheet" href="./src/styles/buttons.css">
-  <link rel="stylesheet" href="./src/styles/nav.css">
-  <link rel="stylesheet" href="./src/styles/layout.css">
-  <link rel="stylesheet" href="./src/styles/modals.css">
-  <link rel="stylesheet" href="./src/styles/tables.css">
-  <link rel="stylesheet" href="./src/styles/utilities.css">
-  <link rel="stylesheet" href="./src/styles/animations.css">
-  <link rel="stylesheet" href="./src/styles/sections/order.css">
-  <link rel="stylesheet" href="./src/styles/sections/sales.css">
-  <link rel="stylesheet" href="./src/styles/sections/users.css">
-  <link rel="stylesheet" href="./src/styles/sections/menu.css">
-  <link rel="stylesheet" href="./src/styles/responsive.css">
-  <link rel="stylesheet" href="./src/styles/dark-mode.css">
-  <link rel="stylesheet" href="./src/styles/print.css" media="print">
 
   <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <!-- JS Libraries -->
+  <!-- Debug Styles: Visual Outline -->
+  <style>
+    *:not(script):not(style) {
+      outline: 1px dashed rgba(0, 255, 0, 0.2);
+    }
+    body {
+      font-family: 'Noto Sans', sans-serif;
+      background: #111;
+      color: #eee;
+    }
+  </style>
+
+  <!-- Eruda Console -->
+  <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+  <script>eruda.init();</script>
+
+  <!-- External JS Libraries -->
   <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/dompurify@3.0.5/dist/purify.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
-  <div id="receiptModal" class="modal"></div>
-  <div id="orderModal" class="modal"></div>
+  <div id="receiptModal" class="modal">[receiptModal]</div>
+  <div id="orderModal" class="modal">[orderModal]</div>
 
   <div id="app">
-    <noscript><p style="text-align:center;color:red;">Please enable JavaScript to use this POS application.</p></noscript>
-    <div id="mainContent"></div>
+    <noscript>
+      <p style="text-align:center;color:red;">Please enable JavaScript to use this POS application.</p>
+    </noscript>
+    <div id="mainContent">[mainContent]</div>
   </div>
 
-  <!-- Main Module Script -->
+  <!-- Your Main App Script -->
   <script type="module" src="./src/main.js"></script>
 
-  <!-- Service Worker -->
+  <!-- Service Worker (Relative Path) -->
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('./sw.js')
-        .then(() => console.log("✅ Service worker registered"))
+        .then(() => console.log("✅ Service Worker registered"))
         .catch(console.error);
+    }
+  </script>
+
+  <!-- Debug Script -->
+  <script type="module">
+    console.log("✅ Inline module script ran!");
+
+    // Check DOM elements
+    const app = document.getElementById('app');
+    const main = document.getElementById('mainContent');
+    const order = document.getElementById('orderModal');
+    const receipt = document.getElementById('receiptModal');
+
+    console.log("🔍 app:", app);
+    console.log("🔍 mainContent:", main);
+    console.log("🔍 orderModal:", order);
+    console.log("🔍 receiptModal:", receipt);
+
+    // Test inject content
+    if (main) {
+      main.innerHTML += `<h1 style="color:lime;">✅ POS Main Content Loaded</h1>`;
+    } else {
+      console.error("❌ mainContent not found in DOM");
     }
   </script>
 </body>
