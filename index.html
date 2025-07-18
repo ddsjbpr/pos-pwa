@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>POS App</title>
-  <base href="https://ddsjbpr.github.io/pos-pwa/">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="theme-color" content="#007bff">
   <link rel="icon" href="icons/icon-192x192.png" type="image/png">
   <link rel="manifest" href="manifest.json">
-  
+
   <!-- Stylesheets -->
   <link rel="stylesheet" href="src/styles/variables.css">
   <link rel="stylesheet" href="src/styles/base.css">
@@ -28,37 +27,37 @@
   <link rel="stylesheet" href="src/styles/responsive.css">
   <link rel="stylesheet" href="src/styles/dark-mode.css">
   <link rel="stylesheet" href="src/styles/print.css" media="print">
- 
+
   <!-- Fonts and Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
- 
+
   <!-- Charts and Sanitizers -->
   <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/dompurify@3.0.5/dist/purify.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
- 
+
 <body>
   <div id="receiptModal" class="modal"></div>
   <div id="orderModal" class="modal"></div>
- 
+
   <div id="app">
     <noscript><p style="text-align:center;color:red;">Please enable JavaScript to use this POS application.</p></noscript>
     <div id="mainContent"></div>
   </div>
- 
-  <!-- ✅ Main script using ES Modules -->
-  <script type="module" src="https://ddsjbpr.github.io/pos-pwa/src/main.js"></script>
- 
+
+  <!-- ✅ CORRECT script path -->
+  <script type="module" src="./src/main.js"></script>
+
   <!-- Service Worker -->
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js').catch(console.error);
+      navigator.serviceWorker.register('./sw.js').catch(console.error);
     }
   </script>
- 
+
   <!-- Eruda (Mobile Console) -->
   <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
   <script>eruda.init();</script>
