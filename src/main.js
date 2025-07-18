@@ -1,19 +1,9 @@
-console.log("main.js loaded!");
+// File: src/main.js
+import { initApp } from './app/initApp.js';
 
-function initApp() {
-  const root = document.getElementById("app"); // Use #app instead of #mainContent
-  if (!root) {
-    console.error("❌ #app not found");
-    return;
-  }
-
-  root.innerHTML += `
-    <p style="color:green;">✅ initApp executed</p>
-    <ul>
-      <li>📦 App initialized</li>
-      <li>🎯 Ready to load modules</li>
-    </ul>
-  `;
-}
-
-initApp();
+window.addEventListener('DOMContentLoaded', () => {
+  initApp().catch(err => {
+    console.error("App failed to initialize:", err);
+    alert("Failed to load the app. Please try again.");
+  });
+});
