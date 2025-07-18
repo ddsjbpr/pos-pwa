@@ -32,30 +32,28 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <!-- External Tools -->
+  <!-- External Libraries -->
   <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/dompurify@3.0.5/dist/purify.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
-  <div id="receiptModal" class="modal">[receiptModal]</div>
-  <div id="orderModal" class="modal">[orderModal]</div>
+  <!-- Modals -->
+  <div id="receiptModal" class="modal"></div>
+  <div id="orderModal" class="modal"></div>
 
+  <!-- App Mount Point -->
   <div id="app">
     <noscript>
       <p style="text-align:center;color:red;">Please enable JavaScript to use this POS application.</p>
     </noscript>
-    <div id="mainContent">
-      <h1>Welcome to POS App</h1>
-      <p>Start building your UI here.</p>
-    </div>
   </div>
 
-  <!-- Load main script -->
+  <!-- Main JS Module -->
   <script type="module" src="./src/main.js"></script>
 
-  <!-- Register service worker -->
+  <!-- Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('./sw.js')
@@ -64,7 +62,7 @@
     }
   </script>
 
-  <!-- Eruda for mobile debugging -->
+  <!-- Eruda for Debugging -->
   <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
   <script>eruda.init();</script>
 </body>
