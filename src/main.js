@@ -1,10 +1,11 @@
-// src/main.js
+// File: src/main.js
+console.log('main.js is running');
 
-console.log("✅ main.js loaded!");
+import { initApp } from './app/initApp.js';
 
-const root = document.getElementById("mainContent");
-if (root) {
-  root.innerHTML = "<h1>Welcome to POS App</h1><p>Start building your UI here.</p>";
-} else {
-  console.error("❌ #mainContent not found!");
-}
+window.addEventListener('DOMContentLoaded', () => {
+  initApp().catch(err => {
+    console.error("App failed to initialize:", err);
+    alert("Failed to load the app. Please try again.");
+  });
+});
