@@ -2,8 +2,8 @@
   "name": "POS App",
   "short_name": "POS",
   "description": "Point of Sale Application for business management",
-  "start_url": "./index.html",
-  "scope": "./",
+  "start_url": "/pos-pwa/index.html",
+  "scope": "/pos-pwa/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#007bff",
@@ -63,7 +63,7 @@
       "name": "New Order",
       "short_name": "Order",
       "description": "Create a new customer order",
-      "url": "/new-order",
+      "url": "/pos-pwa/new-order",
       "icons": [
         {
           "src": "icons/shortcut-96x96.png",
@@ -76,7 +76,7 @@
       "name": "Daily Reports",
       "short_name": "Reports",
       "description": "View today's sales reports",
-      "url": "/reports",
+      "url": "/pos-pwa/reports",
       "icons": [
         {
           "src": "icons/shortcut-96x96.png",
@@ -88,7 +88,7 @@
   ],
   "file_handlers": [
     {
-      "action": "/import",
+      "action": "/pos-pwa/import",
       "accept": {
         "application/json": [
           ".json"
@@ -104,7 +104,7 @@
     }
   ],
   "share_target": {
-    "action": "/share",
+    "action": "/pos-pwa/share",
     "method": "GET",
     "params": {
       "title": "name",
