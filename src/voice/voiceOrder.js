@@ -49,25 +49,30 @@ export async function startVoiceOrder() {
 async function processVoiceCommand(transcript) {
   const lower = transcript.toLowerCase();
 
-  // Check for checkout phrases
   if (
     lower.includes("बिल") || lower.includes("checkout") ||
-    lower.includes("पेमेन्ट") || lower.includes("payment")
+    lower.includes("payment") || lower.includes("पेमेन्ट")
   ) {
     alert("✅ चेकआउट शुरू किया जा रहा है...");
     document.querySelector('[data-voice-checkout]')?.click();
     return;
   }
 
-  // Get menu items
   const menuItems = await POSDatabase.getAll("menuItems");
-  const menuNames = menuItems.map(i => i.name.toLowerCase());
-
-  // Try matching any item name in transcript
   const found = menuItems.find(i => lower.includes(i.name.toLowerCase()));
+
   if (found) {
-    alert(`🛒 '${found.name}' को ऑर्डर में जोड़ा जाएगा`);
-    document.querySelector(`[data-voice-item="${found.name.toLowerCase()}"]`)?.click();
+    appState.cart.push({
+      id: found.id,
+      name: found.name,
+      qty: 1,
+      finalPrice: found.price,
+      variant: null,
+      modifiers: []
+    });
+
+    alert(`✅ '${found.name}' को 1 qty के साथ कार्ट में जोड़ा गया`);
+    renderSection('order');
   } else {
     alert("❓ यह आइटम नहीं मिला: " + transcript);
   }
