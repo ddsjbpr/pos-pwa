@@ -7,3 +7,8 @@ window.addEventListener('DOMContentLoaded', () => {
     alert("Failed to load the app. Please try again.");
   });
 });
+const params = new URLSearchParams(location.search);
+if (params.get('voice') === 'true') {
+  console.log("🎙️ Voice mode activated");
+  startVoiceOrder(); // You’ll implement this
+}
