@@ -1,6 +1,6 @@
 import { appState } from '../state/appState.js';
 import { POSDatabase } from '../db/posDatabase.js';
-import { showReceiptModal, showEditReceiptModal } from '../ui/receiptmodal.js';
+import { showReceiptModal, showEditReceiptModal } from '../ui/receiptModal.js';
 import { genId } from '../utils/id.js';
 import { updateChart } from '../utils/charts.js';
 
