@@ -1,0 +1,77 @@
+/* File: src/styles/print.css */
+
+@media print {
+  /* 1. Hide everything on the page by default, except the receipt modal */
+  body > *:not(#receiptModal) {
+      display: none !important; /* Use display: none to remove from layout */
+  }
+
+  /* 2. Ensure the receipt modal itself is correctly positioned and visible for print */
+  #receiptModal {
+      display: block !important;
+      position: absolute !important; /* Use absolute to take it out of document flow */
+      left: 0 !important;
+      top: 0 !important;
+      width: auto !important; /* Allow content's max-width to control overall width */
+      height: auto !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      background: #fff !important; /* Ensure white background for print */
+      overflow: visible !important; /* Allow content to fully display */
+      box-shadow: none !important;
+      border: none !important;
+  }
+
+  /* 3. Style the actual receipt content (inside .modal-content) for a POS printer */
+  #receiptModal .modal-content {
+      box-shadow: none !important;
+      border: none !important;
+      width: 100% !important; /* Fill the allowed width */
+      max-width: 80mm !important; /* <<< CRITICAL: Adjust this for your printer's paper width (e.g., 58mm, 80mm) */
+      min-width: 58mm !important; /* Optional: set a minimum width */
+      margin: 0 auto !important; /* Center the receipt content on the page */
+      padding: 5mm !important; /* Small padding inside the receipt area */
+      font-family: 'Noto Sans', 'Roboto', 'Arial', sans-serif, 'Segoe UI Symbol', 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', 'monospace', 'sans-serif' !important; /* Monospace is good for receipts */
+      font-size: 11px !important; /* Adjust font size for readability */
+      line-height: 1.2 !important;
+      color: #000 !important; /* Ensure black text */
+      page-break-after: avoid !important; /* Keep the entire receipt together */
+      page-break-inside: avoid !important; /* Prevent breaks within the receipt content */
+  }
+
+  /* 4. Hide the print/close buttons within the receipt modal */
+  #receiptModal .modal-actions {
+      display: none !important;
+  }
+  /* Ensure any buttons within modal-actions are hidden (redundant but safe) */
+  #receiptModal .modal-actions button {
+      display: none !important;
+  }
+
+  /* 5. Style the receipt table for better print layout */
+  #receiptModal .receipt-table-wrapper table {
+      width: 100% !important;
+      border-collapse: collapse !important;
+      margin-bottom: 5mm !important;
+  }
+  #receiptModal .receipt-table-wrapper th,
+  #receiptModal .receipt-table-wrapper td {
+      padding: 1mm 2mm !important; /* Tighter padding for receipt */
+      border: none !important; /* No borders for a clean look */
+      text-align: left !important;
+      vertical-align: top !important;
+  }
+  #receiptModal .receipt-table-wrapper th {
+      font-weight: bold !important;
+  }
+  #receiptModal .receipt-table-wrapper tr {
+      page-break-inside: avoid !important; /* Keep table rows together */
+      page-break-after: auto !important;
+  }
+
+  /* 6. Remove default browser print margins */
+  @page {
+      size: auto; /* Let the browser determine paper size */
+      margin: 0mm !important; /* Remove all default print margins */
+  }
+}
