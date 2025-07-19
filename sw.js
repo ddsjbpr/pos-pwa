@@ -1,46 +1,46 @@
 // File: sw.js - Service Worker for POS PWA
-const CACHE_NAME = 'pos-pwa-cache-v1';
-const OFFLINE_PAGE = '/offline.html';
+const CACHE_NAME = 'pos-pwa-cache-v3'; // You might want to increment this to v2 to force an update
+const OFFLINE_PAGE = '/pos-pwa/offline.html'; // <--- CHANGED
 
 const PRECACHE_ASSETS = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/offline.html',
+  '/pos-pwa/',                  // <--- CHANGED: Represents the root of your app
+  '/pos-pwa/index.html',        // <--- CHANGED
+  '/pos-pwa/manifest.json',     // <--- CHANGED
+  '/pos-pwa/offline.html',      // <--- CHANGED
 
   // Entry point
-  '/src/main.js',
+  '/pos-pwa/src/main.js',       // <--- CHANGED
 
   // App core
-  '/src/app/initApp.js',
-  '/src/app/renderLayout.js',
-  '/src/app/renderSection.js',
-  '/src/app/handleNav.js',
+  '/pos-pwa/src/app/initApp.js',    // <--- CHANGED
+  '/pos-pwa/src/app/renderLayout.js', // <--- CHANGED
+  '/pos-pwa/src/app/renderSection.js',// <--- CHANGED
+  '/pos-pwa/src/app/handleNav.js',    // <--- CHANGED
 
   // Auth
-  '/src/auth/login.js',
-  '/src/auth/register.js',
+  '/pos-pwa/src/auth/login.js',    // <--- CHANGED
+  '/pos-pwa/src/auth/register.js', // <--- CHANGED
 
   // Database & state
-  '/src/db/posDatabase.js',
-  '/src/state/appState.js',
+  '/pos-pwa/src/db/posDatabase.js',// <--- CHANGED
+  '/pos-pwa/src/state/appState.js',// <--- CHANGED
 
   // Utilities
-  '/src/utils/session.js',
-  '/src/utils/crypto.js',
-  '/src/utils/validation.js',
-  '/src/utils/id.js',
-  '/src/utils/dom.js',
+  '/pos-pwa/src/utils/session.js', // <--- CHANGED
+  '/pos-pwa/src/utils/crypto.js',  // <--- CHANGED
+  '/pos-pwa/src/utils/validation.js',// <--- CHANGED
+  '/pos-pwa/src/utils/id.js',      // <--- CHANGED
+  '/pos-pwa/src/utils/dom.js',     // <--- CHANGED
 
   // UI
-  '/src/ui/navVisibility.js',
-  '/src/ui/drawer.js',
+  '/pos-pwa/src/ui/navVisibility.js',// <--- CHANGED
+  '/pos-pwa/src/ui/drawer.js',     // <--- CHANGED
 
   // Optional assets
-  '/icons/icon-192x192.png',
-  '/icons/icon-512x512.png',
-  // '/screenshots/screenshot1.png',
-  // '/screenshots/screenshot2.png',
+  '/pos-pwa/icons/icon-192x192.png',// <--- CHANGED
+  '/pos-pwa/icons/icon-512x512.png',// <--- CHANGED
+  // '/pos-pwa/screenshots/screenshot1.png', // <--- UNCOMMENT AND CHANGE IF NEEDED
+  // '/pos-pwa/screenshots/screenshot2.png', // <--- UNCOMMENT AND CHANGE IF NEEDED
 ];
 
 self.addEventListener('install', (event) => {
@@ -49,6 +49,7 @@ self.addEventListener('install', (event) => {
     caches.open(CACHE_NAME).then((cache) =>
       cache.addAll(PRECACHE_ASSETS).catch((err) => {
         console.error("Cache addAll failed:", err);
+        // You might want to log which asset failed to cache here for better debugging
       })
     )
   );
@@ -72,11 +73,16 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(
       fetch(request)
         .then((response) => {
+          // Check if the response is valid before caching
+          if (!response || response.status !== 200 || response.type !== 'basic') {
+            return response;
+          }
           const copy = response.clone();
           caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
           return response;
         })
         .catch(() =>
+          // If network fails, try to match the request in cache or fall back to offline page
           caches.match(request).then((res) => res || caches.match(OFFLINE_PAGE))
         )
     );
