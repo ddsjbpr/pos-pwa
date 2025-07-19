@@ -14,7 +14,7 @@ export async function renderOrderSection(main) {
     <h2>Order</h2>
     <div id="orderItemsGrid" class="order-items-grid">
       ${menuItems.map(i => `
-        <button class="orderItemBtn" data-id="${i.id}">
+        <button class="orderItemBtn" data-id="${i.id}" data-voice-name="${i.name.toLowerCase()}">
           <span class="item-name">${i.name}</span>
           <span class="item-price">₹${i.price}</span>
           <span class="item-category">${(categories.find(c => c.id === i.categoryId)?.name || "-")}</span>
@@ -53,6 +53,11 @@ export async function renderOrderSection(main) {
   `;
 
   setupOrderEvents(menuItems, categories);
+
+  // Expose for voice command usage
+  window._menuItems = menuItems;
+  window._categories = categories;
+  window._addToCartFromVoice = addToCartFromVoice;
 }
 
 function setupOrderEvents(menuItems, categories) {
@@ -117,3 +122,9 @@ async function getNextReceiptNo() {
   }, 0);
   return "R" + String(max + 1).padStart(4, "0");
 }
+
+// Voice order helper
+function addToCartFromVoice(cartItem) {
+  appState.cart.push(cartItem);
+  renderSection("order");
+                                  }
