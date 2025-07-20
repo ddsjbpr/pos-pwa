@@ -9,5 +9,5 @@ export function logout() {
   localStorage.removeItem("currentSession"); //
   appState.currentUser = null; //
 
-  renderLogin(); // or renderApp();
+  location.reload();
 }
