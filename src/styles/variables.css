@@ -1,0 +1,20 @@
+/* ===== CSS Variables ===== */
+:root {
+  --primary-color: #1560ff;
+  --primary-light: #43b5ff;
+  --primary-dark: #124bcc;
+  --text-color: #26324a;
+  --text-light: #fafdff;
+  --bg-gradient-light: linear-gradient(120deg, #f8faff 80%, #e6f0ff 100%);
+  --bg-gradient-dark: linear-gradient(120deg, #121212 80%, #1a1a1a 100%);
+  --shadow-sm: 0 2px 8px rgba(21, 96, 255, 0.08);
+  --shadow-md: 0 4px 12px rgba(21, 96, 255, 0.15);
+  --border-radius: 8px;
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* --- Add these semantic color variables --- */
+  --success-color: #28a745; /* A standard green for success actions */
+  --info-color: #17a2b8;    /* A standard blue-teal for informational messages */
+  --warning-color: #ffc107; /* A standard yellow-orange for warnings */
+  --danger-color: #dc3545;  /* A standard red for destructive actions or errors */
+}

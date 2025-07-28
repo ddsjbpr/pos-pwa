@@ -1,0 +1,160 @@
+/* ===== Responsive Adjustments ===== */
+
+/* Tablet & Mobile-specific adjustments */
+
+@media (max-width: 767px) {
+    h2, h3, h4 {
+        margin-top: 3.5rem;
+    }
+
+    #drawerOpenBtn {
+        display: block !important;
+    }
+
+    #mainNav .nav-list {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 0;
+        gap: 0;
+    }
+
+    .nav-link {
+        width: 100%;
+        padding: 1em 1.5em;
+        border-radius: 0;
+    }
+
+    .nav-divider {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .cart-table-wrapper th,
+    .cart-table-wrapper td {
+        padding: 0.4em 0.3em;
+        font-size: 0.8em;
+        white-space: normal;
+    }
+    .cart-table-wrapper td:nth-child(1),
+    .cart-table-wrapper th:nth-child(1) { width: 30%; }
+    .cart-table-wrapper td:nth-child(2),
+    .cart-table-wrapper th:nth-child(2) { width: 15%; }
+    .cart-table-wrapper td:nth-child(3),
+    .cart-table-wrapper th:nth-child(3) { width: 15%; }
+    .cart-table-wrapper td:nth-child(4),
+    .cart-table-wrapper th:nth-child(4) { width: 20%; }
+    .cart-table-wrapper td:nth-child(5),
+    .cart-table-wrapper th:nth-child(5) { width: 20%; }
+
+    table th,
+    table td {
+        padding: 0.5em 0.4em;
+        font-size: 0.85em;
+        white-space: normal;
+    }
+    table td {
+        word-break: break-word;
+    }
+
+    tbody tr:nth-child(even) td { background-color: #f8f8f8; }
+    tbody tr:nth-child(odd) td { background-color: #ffffff; }
+    tbody tr:hover td { background-color: #dceeff; }
+
+    .receipt-table-wrapper th,
+    .receipt-table-wrapper td {
+        padding: 0.4em 0.3em;
+        font-size: 0.8em;
+        white-space: normal;
+    }
+    .receipt-table-wrapper td:nth-child(1),
+    .receipt-table-wrapper th:nth-child(1) { width: 25%; }
+    .receipt-table-wrapper td:nth-child(2),
+    .receipt-table-wrapper th:nth-child(2) { width: 35%; }
+    .receipt-table-wrapper td:nth-child(3),
+    .receipt-table-wrapper th:nth-child(3) { width: 10%; }
+    .receipt-table-wrapper td:nth-child(4),
+    .receipt-table-wrapper th:nth-child(4) { width: 15%; }
+    .receipt-table-wrapper td:nth-child(5),
+    .receipt-table-wrapper th:nth-child(5) { width: 15%; }
+
+    #placeOrderBtn {
+      position: fixed;
+      bottom: 1em;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 400px;
+      z-index: 999;
+    }
+
+    #loginContainer {
+      margin: 1em auto;
+      padding: 1em;
+    }
+
+    #loginForm input,
+    #loginForm button {
+      font-size: 0.95em;
+    }
+}
+
+@media (max-width: 500px) {
+    .modal-actions {
+        flex-direction: column;
+        align-items: stretch;
+        /* When flex-direction is column, gap applies vertically. */
+        /* If you want consistent vertical gap using 'gap', ensure browser support. */
+        /* Otherwise, use margin-bottom on the buttons. */
+        gap: 0.8em; /* Added gap to apply vertically between buttons */
+    }
+    .modal-actions button {
+        width: 100%;
+        /* Remove any horizontal margins if they were here, as width: 100% and gap handle spacing */
+        margin-bottom: 0; /* Important: ensure no conflicting margin if using gap on parent */
+    }
+    /* If you find 'gap' property not fully supported or behaving unexpectedly for column direction
+       in older browsers, uncomment the following and comment out 'gap' on .modal-actions:
+    .modal-actions button:not(:last-child) {
+        margin-bottom: 0.8em;
+    }
+    */
+}
+
+@media (max-width: 480px) {
+    #app {
+        border-radius: 0;
+        padding: 1rem max(0.5rem, env(safe-area-inset-right)) 2rem max(0.5rem, env(safe-area-inset-left));
+    }
+
+    h2 { font-size: 1.35rem; }
+    h3 { font-size: 1.15rem; }
+    h4 { font-size: 1rem; }
+
+    /* CRITICAL: Ensure .btn is compact on small screens.
+       ONLY set sizing properties here. DO NOT set colors or background. */
+    .btn {
+        font-size: 0.8em;
+        padding: 0.4em 0.6em;
+        min-height: unset;
+        /* width: auto; */
+        /* REMOVE any background-color, color, border, etc., if they were here */
+    }
+
+    /* If you want the "Add New User" button to be full width specifically on mobile: */
+    #openAddUserModalBtn {
+        width: 98%;
+        margin-right: 0.5em;
+    }
+
+    .order-items-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 0.5rem;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 0.5rem;
+    }
+}

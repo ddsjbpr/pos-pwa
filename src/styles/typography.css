@@ -1,0 +1,20 @@
+/* ===== Typography ===== */
+h2, h3, h4 {
+  color: var(--primary-color);
+  margin: 0.8rem 0 0.5rem;
+  line-height: 1.3;
+  font-weight: 600;
+  word-break: break-word;
+}
+
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1.1rem; font-weight: 500; }
+
+.item-price {
+  font-family: 'noto sans','Segoe UI Symbol', 'Noto Sans Symbols', 'Nirmala UI', 'Segoe UI', Roboto, sans-serif !important;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.2;
+  overflow: visible;
+}
