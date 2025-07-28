@@ -165,7 +165,7 @@ function rerender(main) {
     }, 0);
 
   const html = `
-    <table>
+  <div id="salesTableHolder">  <table>
       <thead>
         <tr>
             <th>
@@ -184,13 +184,13 @@ function rerender(main) {
       <tbody>
         ${filtered.map(renderOrderRow).join("")}
       </tbody>
-    </table>
+    </table></div>
     <div><strong>
       Total Sales: ₹${filtered.reduce((s, o) => s + (o._filteredTotal ?? o.total ?? 0), 0)}<br>
       Items Sold: ${filtered.reduce((s, o) => s + (o._filteredItems ?? o.items)?.reduce((n, i) => n + i.qty, 0), 0)}<br>
       Total Modifier Cost: ₹${totalModifierCost.toFixed(2)}
     </strong></div>
-    <div id="salesTableHolder"></div>
+    
   `;
 
   document.getElementById("salesTableHolder").innerHTML = DOMPurify.sanitize(html);
