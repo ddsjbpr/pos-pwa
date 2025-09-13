@@ -1,0 +1,226 @@
+/* ===== Menu Management Styles ===== */
+.menu-items-table-wrapper {
+    overflow-x: auto;
+    margin-top: 1.5em;
+}
+
+.menu-items-table-wrapper table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.menu-items-table-wrapper th,
+.menu-items-table-wrapper td {
+    border: 1px solid #eee;
+    padding: 0.6em 0.4em;
+    text-align: left;
+    vertical-align: top;
+    font-size: 0.9em;
+}
+
+.menu-items-table-wrapper th {
+    background-color: #e0efff;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+/* Column width adjustments - similar to sales table */
+.menu-items-table-wrapper td:nth-child(1),
+.menu-items-table-wrapper th:nth-child(1) {
+    width: 20%; /* First column */
+}
+
+.menu-items-table-wrapper td:nth-child(2),
+.menu-items-table-wrapper th:nth-child(2) {
+    width: 50%; /* Main content column */
+}
+
+.menu-items-table-wrapper td:nth-child(3),
+.menu-items-table-wrapper th:nth-child(3) {
+    width: 15%; /* Smaller column */
+}
+
+.menu-items-table-wrapper td:nth-child(4),
+.menu-items-table-wrapper th:nth-child(4) {
+    width: 15%; /* Actions column */
+}
+
+@media screen and (max-width: 600px) {
+    .menu-items-table-wrapper th,
+    .menu-items-table-wrapper td {
+        padding: 0.4em 0.3em;
+        font-size: 0.8em;
+    }
+
+    /* Adjust column widths for smaller screens */
+    .menu-items-table-wrapper td:nth-child(1),
+    .menu-items-table-wrapper th:nth-child(1) {
+        width: 25%;
+    }
+
+    .menu-items-table-wrapper td:nth-child(2),
+    .menu-items-table-wrapper th:nth-child(2) {
+        width: 40%;
+    }
+
+    .menu-items-table-wrapper td:nth-child(3),
+    .menu-items-table-wrapper th:nth-child(3) {
+        width: 15%;
+    }
+
+    .menu-items-table-wrapper td:nth-child(4),
+    .menu-items-table-wrapper th:nth-child(4) {
+        width: 20%;
+    }
+    .menu-items-table-wrapper td:nth-child(6) button {
+        width: 100%; /* or auto */
+      }
+}
+
+
+
+
+/* Styles for action buttons within modals, e.g., category management */
+.modal-action-btn {
+    padding: 4px 8px; /* Slightly less padding for a more compact look */
+    font-size: 0.75em; /* Smaller font size */
+    min-width: 60px; /* Ensures a consistent minimum width for sleekness */
+    text-align: center;
+    display: inline-block; /* Essential for padding/width to apply correctly */
+    box-sizing: border-box; /* Include padding in width calculation */
+    vertical-align: middle; /* Align icons/text nicely */
+    line-height: 1.2; /* Adjust line height for vertical alignment */
+}
+
+/* ... (existing styles) ... */
+
+.editItemBtn, .deleteItemBtn {
+    padding: 0.4em 0.6em; /* Compact padding */
+    font-size: 0.8em;    /* Smaller font size */
+    border-radius: 5px;
+    cursor: pointer;
+    white-space: nowrap; /* Prevents text from wrapping */
+    border: 1px solid #ccc;
+    background-color: #f0f0f0; /* Default background */
+    color: #333; /* Default text color */
+    transition: background-color 0.2s, border-color 0.2s; /* Smooth transitions */
+}
+
+/* Optional: Add hover/active states for better user experience */
+.editItemBtn:hover, .deleteItemBtn:hover {
+    background-color: #e0e0e0;
+    border-color: #bbb;
+}
+
+/* If you want the delete button to be red, add this specific style: */
+.deleteItemBtn {
+    background-color: #dc3545; /* Bootstrap's btn-danger red */
+    color: #fff; /* White text for contrast */
+    border-color: #dc3545;
+}
+
+.deleteItemBtn:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+/* src/css/menu.css */
+
+/* ... (existing styles) ... */
+
+/* src/css/menu.css */
+
+/* ... (existing styles) ... */
+
+/* src/css/menu.css */
+
+/* ... (existing styles) ... */
+
+/* Update this block to include all custom buttons */
+.editItemBtn, .deleteItemBtn,
+.editCategoryBtn, .deleteCategoryBtn,
+.saveCategoryBtn, .cancelEditCategoryBtn,
+.addCategoryBtn, .closeModalBtn { /* ADDED THESE CLASSES */
+    padding: 0.4em 0.6em; /* Compact padding */
+    font-size: 0.8em;    /* Smaller font size */
+    border-radius: 5px;
+    cursor: pointer;
+    white-space: nowrap; /* Prevents text from wrapping */
+    border: 1px solid #ccc;
+    background-color: #f0f0f0; /* Default background */
+    color: #333; /* Default text color */
+    transition: background-color 0.2s, border-color 0.2s; /* Smooth transitions */
+}
+
+/* Optional: Add hover/active states for better user experience */
+.editItemBtn:hover, .deleteItemBtn:hover,
+.editCategoryBtn:hover, .deleteCategoryBtn:hover,
+.saveCategoryBtn:hover, .cancelEditCategoryBtn:hover,
+.addCategoryBtn:hover, .closeModalBtn:hover { /* ADDED THESE CLASSES */
+    background-color: #e0e0e0;
+    border-color: #bbb;
+}
+
+/* For the delete buttons, you might want to retain a distinct red color. */
+.deleteItemBtn,
+.deleteCategoryBtn {
+    background-color: #dc3545; /* Bootstrap's btn-danger red */
+    color: #fff; /* White text for contrast */
+    border-color: #dc3545;
+}
+
+.deleteItemBtn:hover,
+.deleteCategoryBtn:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+/* Add specific styles for Save button (green) */
+.saveCategoryBtn {
+    background-color: #28a745; /* Bootstrap's btn-success green */
+    color: #fff;
+    border-color: #28a745;
+}
+
+.saveCategoryBtn:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+/* Add specific styles for Cancel button (secondary grey) */
+.cancelEditCategoryBtn {
+    background-color: #6c757d; /* Bootstrap's btn-secondary grey */
+    color: #fff;
+    border-color: #6c757d;
+}
+
+.cancelEditCategoryBtn:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+/* Add specific styles for Add Category button (primary blue) */
+.addCategoryBtn { /* NEW RULE */
+    background-color: #007bff; /* Bootstrap's btn-primary blue */
+    color: #fff;
+    border-color: #007bff;
+}
+
+.addCategoryBtn:hover { /* NEW RULE */
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+/* Add specific styles for Close Modal button (secondary grey, slightly darker than general secondary if desired) */
+.closeModalBtn { /* NEW RULE */
+    background-color: #6c757d; /* Bootstrap's btn-secondary grey */
+    color: #fff;
+    border-color: #6c757d;
+}
+
+.closeModalBtn:hover { /* NEW RULE */
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+
+/* ... (rest of the menu.css file) ... */

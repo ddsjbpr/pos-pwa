@@ -1,0 +1,201 @@
+/* ===========================
+    Cart table styling - MODIFIED FOR MAXIMUM COMPACTNESS WITH SCROLL (6 COLUMNS)
+=========================== */
+.cart-table-wrapper {
+  overflow-x: auto;
+  margin-bottom: 1em;
+  border: 1px solid #eee;
+  border-radius: 5px;
+}
+
+.cart-table-wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0;
+  margin-bottom: 0;
+  table-layout: auto;
+  /* Adjusted min-width for 6 columns */
+  min-width: 300px; /* Slightly less needed now that there's one less column */
+}
+
+.cart-table-wrapper th,
+.cart-table-wrapper td {
+  border: 1px solid #eee;
+  padding: 0.2em 0.3em;
+  text-align: left;
+  white-space: nowrap; /* Keep content on one line for horizontal scroll */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.75em;
+  line-height: 1.2;
+}
+
+.cart-table-wrapper th {
+  background-color: #f0f0f0;
+  font-weight: 600;
+  color: #555;
+}
+
+.cart-table-wrapper td:last-child { /* This will now target the 6th column (Remove) */
+  text-align: center;
+}
+
+/* Specific input width within Qty column for all screen sizes */
+/* Qty is now 3rd column */
+.cart-table-wrapper td:nth-child(3) input.cart-qty-input {
+  width: 2.5em;
+  box-sizing: border-box;
+  font-size: 0.8em;
+  padding: 1px;
+  text-align: center;
+}
+
+/* Ensure remove button is compact for all screen sizes */
+.cart-table-wrapper .removeCartBtn {
+  padding: 0.15em 0.2em;
+  font-size: 0.65em;
+  min-width: unset;
+  white-space: nowrap;
+}
+
+/* --- Column width adjustments for cart table ---
+ Updated for 6 columns.
+ Sum of min-widths: 90+110+50+70+70+40 = 430px (slightly more than table min-width to ensure space)
+*/
+.cart-table-wrapper td:nth-child(1), /* Item */
+.cart-table-wrapper th:nth-child(1) {
+  min-width: 40px;
+  width: 40;
+}
+
+.cart-table-wrapper td:nth-child(2), /* NEW: Details (Variant + Modifiers) */
+.cart-table-wrapper th:nth-child(2) {
+  min-width: 80px; /* Give more space for combined details */
+  width: auto;
+  white-space: normal; /* IMPORTANT: Allow details to wrap vertically */
+  word-break: break-word; /* Ensure long modifier lists wrap */
+}
+
+.cart-table-wrapper td:nth-child(3), /* Qty (was 4th, now 3rd) */
+.cart-table-wrapper th:nth-child(3) {
+  width: 20px;
+  min-width: 20px;
+  text-align: center;
+}
+
+.cart-table-wrapper td:nth-child(4), /* Price (was 5th, now 4th) */
+.cart-table-wrapper th:nth-child(4) {
+  width: 20px;
+  min-width: 20px;
+}
+
+.cart-table-wrapper td:nth-child(5), /* Total (was 6th, now 5th) */
+.cart-table-wrapper th:nth-child(5) {
+  width: 20px; /* Adjusted slightly */
+  min-width: 20px;
+}
+
+.cart-table-wrapper td:nth-child(6), /* Remove Button (was 7th, now 6th) */
+.cart-table-wrapper th:nth-child(6) {
+  width: 40px; /* Target very small fixed width for the button */
+  min-width: 40px;
+}
+
+
+/* =======================
+  Responsive Adjustments (Review for indexing changes)
+========================== */
+
+/* Tablet & Mobile-specific adjustments (767px breakpoint) */
+@media (max-width: 767px) {
+  /* ... (keep existing global 767px adjustments) ... */
+
+  /* Order section header adjustment */
+  .order-section-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+  }
+  .voice-order-controls {
+      width: 100%;
+      justify-content: space-between;
+      margin-bottom: 10pt;
+  }
+  .voice-output-display {
+      text-align: left;
+  }
+}
+
+
+@media screen and (max-width: 600px) {
+  /* Global table adjustments for 600px breakpoint */
+  table th,
+  table td {
+      padding: 0.3em 0.2em;
+      font-size: 0.75em;
+      white-space: normal;
+  }
+  table td {
+      word-break: break-word;
+  }
+
+  tbody tr:nth-child(even) td { background-color: #f8f8f8; }
+  tbody tr:nth-child(odd) td { background-color: #ffffff; }
+  tbody tr:hover td { background-color: #dceeff; }
+
+  /* Cart table at 600px: No specific overrides needed here for cart table,
+     as the general compact rules above should apply and scroll will handle overflow. */
+
+
+  /* Receipt table styling for 600px breakpoint (still 5 columns, so no change) */
+  .receipt-table-wrapper th,
+  .receipt-table-wrapper td {
+      padding: 0.3em 0.2em;
+      font-size: 0.75em;
+      white-space: normal;
+  }
+  .receipt-table-wrapper td:nth-child(1),
+  .receipt-table-wrapper th:nth-child(1) { width: 25%; }
+  .receipt-table-wrapper td:nth-child(2),
+  .receipt-table-wrapper th:nth-child(2) { width: 35%; }
+  .receipt-table-wrapper td:nth-child(3),
+  .receipt-table-wrapper th:nth-child(3) { width: 10%; }
+  .receipt-table-wrapper td:nth-child(4),
+  .receipt-table-wrapper th:nth-child(4) { width: 15%; }
+  .receipt-table-wrapper td:nth-child(5),
+  .receipt-table-wrapper th:nth-child(5) { width: 15%; }
+
+
+  /* Place Order Button for 600px breakpoint (keep as is) */
+  #placeOrderBtn {
+      position: fixed;
+      bottom: 1em;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 400px;
+      z-index: 999;
+  }
+
+  /* ... (rest of your existing 600px media queries) ... */
+}
+
+@media (max-width: 480px) {
+  /* ... (keep existing 480px media queries) ... */
+
+  /* Further refine cart table for very small screens if needed */
+  .cart-table-wrapper th,
+  .cart-table-wrapper td {
+      font-size: 0.7em; /* Even smaller font for very small screens */
+      padding: 0.15em 0.2em; /* Extremely minimal padding */
+  }
+  /* Qty input (now 3rd column) */
+  .cart-table-wrapper td:nth-child(3) input.cart-qty-input {
+      font-size: 0.65em;
+  }
+  /* Remove button (now 6th column) */
+  .cart-table-wrapper .removeCartBtn {
+      font-size: 0.65em;
+      padding: 0.15em 0.2em;
+  }
+}

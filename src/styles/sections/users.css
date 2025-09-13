@@ -1,0 +1,121 @@
+/* ===== User Management & Authentication Styles ===== */
+
+/* Center the entire login container */
+#loginContainer {
+  max-width: 340px;
+  margin: 2em auto 0 auto;
+  padding: 1.5em;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+#loginForm input {
+  display: block;
+  width: 100%;
+  padding: 0.45em 0.7em;
+  margin-bottom: 0.8em;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  line-height: 1.2;
+}
+
+/* Registration Container */
+.register-container {
+  max-width: 340px;
+  margin: 2em auto;
+  padding: 1.2em;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  line-height: 1.3;
+}
+
+/* Form groups */
+.register-container .form-group {
+  margin-bottom: 0.6rem;
+}
+
+.register-container .form-group label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.register-container .form-group input {
+  width: 100%;
+  padding: 0.45rem 0.65rem;
+  font-size: 0.95rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  line-height: 1.2;
+}
+
+/* Password Requirements */
+.password-requirements {
+  margin: 0.4rem 0;
+  padding: 8px 10px;
+  background: #f5f5f5;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  color: #555;
+  line-height: 1.3;
+}
+
+.password-requirements ul {
+  margin: 0.3rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.password-requirements li {
+  list-style-type: none;
+  position: relative;
+  color: gray;
+  margin-bottom: 0.2rem;
+  line-height: 1.3;
+}
+
+.password-requirements li:before {
+  content: "•";
+  position: absolute;
+  left: -15px;
+}
+
+/* === Dark Mode === */
+@media (prefers-color-scheme: dark) {
+  #loginContainer {
+    background: #2d2d2d;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  #loginForm input {
+    background: #3a3a3a;
+    border-color: #555;
+    color: #e0e0e0;
+  }
+
+  .register-container {
+    background: #2d2d2d;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+  }
+
+  .register-container .form-group input {
+    background: #3a3a3a;
+    border-color: #555;
+    color: #e0e0e0;
+  }
+
+  .password-requirements {
+    background: #3a3a3a;
+    color: #bbb;
+  }
+
+  .register-container .password-requirements {
+    background: #3a3a3a;
+    color: #bbb;
+  }
+}
+
+/* All .btn styles moved to src/styles/buttons.css */
