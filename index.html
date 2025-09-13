@@ -33,17 +33,17 @@
     <link rel="stylesheet" href="./src/styles/print.css" media="print">
   
     <!-- 🧠 Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="./src/vendor/noto-sans/noto-sans.css">
+<link rel="stylesheet" href="./src/vendor/fontawesome/css/all.min.css">
   
     <!-- 📊 Scripts -->
-    <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/dompurify@3.0.5/dist/purify.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-   
-
-    <!-- 🇮🇳 Hindi Transliteration -->
+    <script defer src="./src/vendor/third-party/JS/chart.umd.min.js"></script>
+<script defer src="./src/vendor/third-party/JS/purify.min.js"></script>
+<script src="./src/vendor/third-party/JS/jspdf.umd.min.js"></script>
+<script src="./src/vendor/third-party/JS/html2canvas.min.js"></script>
+<script src="./src/vendor/third-party/JS/xlsx.full.min.js"></script>
+    
+ 
    
   </head>
   
@@ -55,6 +55,8 @@
     <noscript><p style="text-align:center;color:red;">Please enable JavaScript to use this POS application.</p></noscript>
     <main id="mainContent"></main>
   </div>
+
+     <!-- 🇮🇳 Hindi Transliteration -->
   <script src="./src/vendor/pramukh/pramukhime.js"></script>
   <script src="./src/vendor/pramukh/pramukhime-common.js"></script>
   
@@ -62,10 +64,6 @@
   
   <script type="module" src="src/main.js"></script>
 
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js').catch(console.error);
-    }
-  </script>
+  
 </body>
 </html>
