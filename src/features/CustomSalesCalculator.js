@@ -1,5 +1,5 @@
 // File: src/features/CustomSalesCalculator.js
-import { openOrderModal, closeOrderModal } from '../ui/Modals.js';
+import { openOrderModal, closeOrderModal } from '../ui/modals.js';
 
 /**
  * Renders and manages a modal for adding a custom sales item.
@@ -98,3 +98,4 @@ export function showCustomSalesCalculatorModal(onAddItem) {
     // Call the shared function to open the modal
     openOrderModal();
 }
+
