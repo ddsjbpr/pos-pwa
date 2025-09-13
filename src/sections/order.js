@@ -16,7 +16,7 @@ import { dataService } from '../services/dataService.js';
 import { POSDatabase } from '../db/posDatabase.js';
 
 // 🆕 Import the function from the new Custom Sales Calculator file
-import { showCustomSalesCalculatorModal } from '../features/customSalesCalculator.js';
+import { showCustomSalesCalculatorModal } from '../features/CustomSalesCalculator.js';
 
 // Global reference for the main order element to pass to voice ordering
 //let voiceOrderMainElement;
@@ -416,3 +416,4 @@ export async function handleVoiceOrderCallback(type, payload) {
     }
   }
 }
+
