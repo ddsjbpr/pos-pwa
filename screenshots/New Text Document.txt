@@ -1,0 +1,44 @@
+"screenshots": [
+    {
+      "src": "screenshots/mobile/screenshot1.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Home screen with sales overview"
+    },
+    {
+      "src": "screenshots/mobile/screenshot2.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Product catalog with item details"
+    },
+    {
+      "src": "screenshots/mobile/screenshot3.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Checkout process with payment options"
+    },
+    {
+      "src": "screenshots/desktop/screenshot1.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Dashboard with analytics"
+    },
+    {
+      "src": "screenshots/desktop/screenshot2.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "User management interface"
+    },
+    {
+      "src": "screenshots/desktop/screenshot3.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Inventory management"
+    }
+  ],
