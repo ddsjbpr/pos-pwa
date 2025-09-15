@@ -8,7 +8,7 @@ import { initApp } from './app/initApp.js';
 window.addEventListener('DOMContentLoaded', () => {
   // Check for Service Worker support and register it.
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js')
+    navigator.serviceWorker.register('./sw.js')
       .then(registration => {
         console.log('Service Worker registered with scope:', registration.scope);
       })
@@ -26,3 +26,4 @@ window.addEventListener('DOMContentLoaded', () => {
     console.warn("Failed to load the app. Please check the console for details.");
   });
 });
+
