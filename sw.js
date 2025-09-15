@@ -44,11 +44,11 @@ const PRECACHE_ASSETS = [
   './src/vendor/fontawesome/webfonts/fa-solid-900.ttf',
 
   // Local Vendor Scripts
-  './src/vendor/third-party/JS/chart.umd.min.js',
-  './src/vendor/third-party/JS/purify.min.js',
-  './src/vendor/third-party/JS/jspdf.umd.min.js',
-  './src/vendor/third-party/JS/html2canvas.min.js',
-  './src/vendor/third-party/JS/xlsx.full.min.js',
+  './src/vendor/third-party/js/chart.umd.min.js',
+  './src/vendor/third-party/js/purify.min.js',
+  './src/vendor/third-party/js/jspdf.umd.min.js',
+  './src/vendor/third-party/js/html2canvas.min.js',
+  './src/vendor/third-party/js/xlsx.full.min.js',
   './src/vendor/pramukh/pramukhime.js',
   './src/vendor/pramukh/pramukhime-common.js',
   './src/vendor/pramukh/pramukhindic.js',
