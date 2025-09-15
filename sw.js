@@ -4,58 +4,58 @@ const CACHE_NAME = `pos-pwa-cache-${CACHE_VERSION}`;
 const OFFLINE_PAGE = '/offline.html';
 
 const PRECACHE_ASSETS = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/offline.html',
+  './',
+  './index.html',
+  './manifest.json',
+  './offline.html',
 
   // Core App Scripts
-  '/src/main.js',
-  '/src/db/posDatabase.js',
-  '/src/db/firebase-config.js',
-  '/src/app/initApp.js',
+  './src/main.js',
+  './src/db/posDatabase.js',
+  './src/db/firebase-config.js',
+  './src/app/initApp.js',
 
   // Core & Section Styles
-  '/src/styles/variables.css',
-  '/src/styles/base.css',
-  '/src/styles/typography.css',
-  '/src/styles/forms.css',
-  '/src/styles/buttons.css',
-  '/src/styles/nav.css',
-  '/src/styles/layout.css',
-  '/src/styles/modals.css',
-  '/src/styles/tables.css',
-  '/src/styles/utilities.css',
-  '/src/styles/animations.css',
-  '/src/styles/sections/order.css',
-  '/src/styles/sections/sales.css',
-  '/src/styles/sections/users.css',
-  '/src/styles/sections/menu.css',
-  '/src/styles/responsive.css',
-  '/src/styles/dark-mode.css',
-  '/src/styles/print.css',
+  './src/styles/variables.css',
+  './src/styles/base.css',
+  './src/styles/typography.css',
+  './src/styles/forms.css',
+  './src/styles/buttons.css',
+  './src/styles/nav.css',
+  './src/styles/layout.css',
+  './src/styles/modals.css',
+  './src/styles/tables.css',
+  './src/styles/utilities.css',
+  './src/styles/animations.css',
+  './src/styles/sections/order.css',
+  './src/styles/sections/sales.css',
+  './src/styles/sections/users.css',
+  './src/styles/sections/menu.css',
+  './src/styles/responsive.css',
+  './src/styles/dark-mode.css',
+  './src/styles/print.css',
 
   // Local Vendor Styles
-  '/src/vendor/noto-sans/noto-sans.css',
-  '/src/vendor/fontawesome/css/all.min.css',
+  './src/vendor/noto-sans/noto-sans.css',
+  './src/vendor/fontawesome/css/all.min.css',
 
   // Local Vendor Fonts
-  '/src/vendor/fontawesome/webfonts/fa-solid-900.woff2',
-  '/src/vendor/fontawesome/webfonts/fa-solid-900.ttf',
+  './src/vendor/fontawesome/webfonts/fa-solid-900.woff2',
+  './src/vendor/fontawesome/webfonts/fa-solid-900.ttf',
 
   // Local Vendor Scripts
-  '/src/vendor/third-party/JS/chart.umd.min.js',
-  '/src/vendor/third-party/JS/purify.min.js',
-  '/src/vendor/third-party/JS/jspdf.umd.min.js',
-  '/src/vendor/third-party/JS/html2canvas.min.js',
-  '/src/vendor/third-party/JS/xlsx.full.min.js',
-  '/src/vendor/pramukh/pramukhime.js',
-  '/src/vendor/pramukh/pramukhime-common.js',
-  '/src/vendor/pramukh/pramukhindic.js',
+  './src/vendor/third-party/JS/chart.umd.min.js',
+  './src/vendor/third-party/JS/purify.min.js',
+  './src/vendor/third-party/JS/jspdf.umd.min.js',
+  './src/vendor/third-party/JS/html2canvas.min.js',
+  './src/vendor/third-party/JS/xlsx.full.min.js',
+  './src/vendor/pramukh/pramukhime.js',
+  './src/vendor/pramukh/pramukhime-common.js',
+  './src/vendor/pramukh/pramukhindic.js',
 
   // Icons
-  '/icons/icon-192x192.png',
-  '/icons/icon-512x512.png',
+  './icons/icon-192x192.png',
+  './icons/icon-512x512.png',
 ];
 
 // Install - precache app shell
