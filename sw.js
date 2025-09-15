@@ -1,7 +1,7 @@
 // sw.js - Optimized Offline-First Service Worker
 const CACHE_VERSION = 'v1.0.3'; // Bumping version after changes
 const CACHE_NAME = `pos-pwa-cache-${CACHE_VERSION}`;
-const OFFLINE_PAGE = '/offline.html';
+const OFFLINE_PAGE = './offline.html';
 
 const PRECACHE_ASSETS = [
   './',
