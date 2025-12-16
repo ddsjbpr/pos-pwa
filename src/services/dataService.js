@@ -26,7 +26,7 @@ export const dataService = {
       console.error("Failed to open local database:", error);
     }
     
-    const collectionsToListen = ['menuItems', 'users', 'categories', 'modifiers', 'variants'];
+    const collectionsToListen = ['menuItems', 'users', 'categories', 'modifiers', 'variants','orders'];
     collectionsToListen.forEach(collectionName => {
       remoteDB.listenAll(collectionName, async (data) => {
         console.log(`Received real-time update from Firebase for ${collectionName}.`);
@@ -251,4 +251,5 @@ export const dataService = {
       console.error("Error during offline sync process:", error);
     }
   }
+
 };
