@@ -218,35 +218,33 @@ export const dataService = {
 
     try {
       const offlineChanges = await localDB.getOfflineQueue();
-      if (offlineChanges.length === 0) {
+      if (!offlineChanges || offlineChanges.length === 0) {
         console.log("Offline queue is empty. Nothing to sync.");
         return;
       }
 
       console.log(`Found ${offlineChanges.length} pending changes. Starting sync...`);
 
-      const syncPromises = offlineChanges.map(async (item) => {
+      for (const item of offlineChanges) {
         try {
+          const queueId = item.id;
+          const remoteId = item.value?.id;
           if (item.operationType === 'delete') {
             await remoteDB.delete(item.collectionName, item.value.id);
-            console.log(`Synced and deleted item with id: ${item.value.id} from remote DB.`);
+            console.log(`Synced delete for ${item.collectionName} id=${remoteId || queueId}`);
           } else {
-            // 💡 Sanitize the data before sending it to Firebase
             const sanitizedValue = this.sanitizeDocument(item.value);
             await remoteDB.put(item.collectionName, sanitizedValue);
-            console.log(`Synced and put item with id: ${item.id} to remote DB.`);
+            console.log(`Synced put for ${item.collectionName} id=${remoteId || queueId}`);
           }
           await localDB.deleteOfflineQueue(item.id);
         } catch (err) {
-          console.error(`Failed to sync item with id: ${item.id}. Will retry later.`, err);
-          // Rethrow the error to stop the sync process and retry later
-          throw err;
+          console.error(`Failed to sync queue item ${item.id} (${item.collectionName}). Will retry later.`, err);
+          // continue with next item instead of throwing to allow other items to sync
         }
-      });
+      }
 
-      await Promise.allSettled(syncPromises);
       console.log("Offline sync process complete.");
-
     } catch (error) {
       console.error("Error during offline sync process:", error);
     }
